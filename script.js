@@ -9,27 +9,26 @@ let particleArray = [];
 const mouse = {
     x: null,
     y: null,
-    radius: 50
+    radius: 75
 }
 
 window.addEventListener('mousemove', function(event){
     mouse.x = event.x;
     mouse.y = event.y;
-//    console.log(mouse.x, mouse.y);
 });
 ctx.fillStyle = 'white';
-ctx.font = '200px Verdana';
-ctx.fillText('KEDI', canvas.width/2, canvas.height/2);
+ctx.font = '110px Verdana';
+ctx.fillText('KEDI & KATER', 180, canvas.height/2);
 const textCoordinates = ctx.getImageData(0,0,canvas.width, canvas.height);
 
 class Particle {
     constructor(x,y){
         this.x = x;
         this.y = y;
-        this.size = 2;
+        this.size = 1;
         this.baseX = this.x;
         this.baseY = this.y;
-        this.density = (Math.random()* 40) +5;
+        this.density = (Math.random()* 5) +5;
     }
     draw(){
         ctx.fillStyle = 'white';
@@ -50,17 +49,17 @@ class Particle {
         let directionY = forceDirectionY * force * this.density;
 
         if (distance < mouse.radius){
-            this.x -= directionX * 3;
-            this.y -= directionY * 3;
+            this.x -= directionX * 50;
+            this.y -= directionY * 50;
 
         } else {
             if(this.x !== this.baseX){
                 let dx = this.x - this.baseX;
-                this.x -= dx/5;
+                this.x -= dx/100;
             }
             if(this.y !== this.baseY){
                 let dy = this.y - this.baseY;
-                this.y -= dy/5;
+                this.y -= dy/100;
             }
         }
     }
