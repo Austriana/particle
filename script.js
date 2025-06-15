@@ -19,6 +19,9 @@ window.addEventListener('mousemove', function(event){
 ctx.fillStyle = 'white';
 ctx.font = '110px Verdana';
 ctx.fillText('KEDI & KATER', 180, canvas.height/2);
+ctx.fillText('Sarah & Marco', 180, 150);
+ctx.fillText('Saraco Atamang', 180, 800);
+
 const textCoordinates = ctx.getImageData(0,0,canvas.width, canvas.height);
 
 class Particle {
