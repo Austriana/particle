@@ -4,23 +4,27 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let particleArray = [];
+let textInput = 'KEDI ❤ MATOU'
+
 
 const mouse = {
     x: null,
     y: null,
-    radius: 75
+    radius: 150
 }
-
 window.addEventListener('mousemove', function(event){
     mouse.x = event.x;
     mouse.y = event.y;
 });
-ctx.fillStyle = 'white';
-ctx.font = '110px Verdana';
-ctx.fillText('KEDI & KATER', 180, canvas.height/2);
-ctx.fillText('Sarah & Marco', 180, 150);
-ctx.fillText('Saraco Atamang', 180, 800);
+ctx.font = '50px Verdana';
+const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+gradient.addColorStop(0.3, 'blue');
+gradient.addColorStop(0.5, 'magenta');
+gradient.addColorStop(0.7, 'orange');
+
+let textWidth = ctx.measureText(textInput).width;
+ctx.fillStyle = gradient;
+ctx.fillText(textInput, (canvas.width/2 - textWidth/2), (canvas.height/2));
 
 const textCoordinates = ctx.getImageData(0,0,canvas.width, canvas.height);
 
@@ -31,10 +35,9 @@ class Particle {
         this.size = 1;
         this.baseX = this.x;
         this.baseY = this.y;
-        this.density = (Math.random()* 5) +5;
+        this.density = 5;
     }
     draw(){
-        ctx.fillStyle = 'white';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.closePath();
@@ -46,14 +49,14 @@ class Particle {
         let distance = Math.sqrt(dx * dx + dy * dy);
         let forceDirectionX = dx / distance;
         let forceDirectionY = dy / distance;
-        let maxDistance = mouse.radius;
+        let maxDistance = Math.random() * 100;
         let force = (maxDistance - distance) / maxDistance;
         let directionX = forceDirectionX * force * this.density;
         let directionY = forceDirectionY * force * this.density;
 
-        if (distance < mouse.radius){
-            this.x -= directionX * 50;
-            this.y -= directionY * 50;
+        if (distance < Math.random() * 100){
+            this.x -= directionX * 10;
+            this.y -= directionY * 10;
 
         } else {
             if(this.x !== this.baseX){
