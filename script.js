@@ -16,6 +16,7 @@ window.addEventListener('touchstart', (event) => {
     mouse.x = event.touches[0].clientX;
     mouse.y = event.touches[0].clientY;    
 });
+
 ctx.font = '50px Verdana';
 const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
 gradient.addColorStop(0.3, 'blue');
