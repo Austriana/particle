@@ -4,7 +4,8 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let textInput = 'KEDI ❤ MATOU'
+let textInput = 'KEDI ❤ MATOU';
+let touch = false;
 
 
 const mouse = {
@@ -14,8 +15,18 @@ const mouse = {
 }
 window.addEventListener('touchmove', (event) => {
     mouse.x = event.touches[0].clientX;
-    mouse.y = event.touches[0].clientY;    
+    mouse.y = event.touches[0].clientY;
+    touch = true;
 });
+
+window.addEventListener('mousemove', (event) => {
+    if(!touch){
+        mouse.x = event.x;
+        mouse.y = event.y;
+    }
+    touch = false;
+});
+
 ctx.font = '50px Verdana';
 const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
 gradient.addColorStop(0.3, 'blue');
