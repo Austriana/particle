@@ -12,7 +12,7 @@ const mouse = {
     y: null,
     radius: 150
 }
-window.addEventListener('touchmove', function(event){
+window.addEventListener('touchstart', function(event){
     mouse.x = event.x;
     mouse.y = event.y;
 });
