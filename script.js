@@ -12,9 +12,9 @@ const mouse = {
     y: null,
     radius: 150
 }
-window.addEventListener('touchstart', function(event){
-    mouse.x = event.x;
-    mouse.y = event.y;
+window.addEventListener('touchmove' ||'mousemove', (event) => {
+    mouse.x = event.touches[0].clientX;
+    mouse.y = event.touches[0].clientY;    
 });
 ctx.font = '50px Verdana';
 const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
