@@ -7,7 +7,6 @@ canvas.height = window.innerHeight;
 let textInput = 'Swipe me ❤';
 let touch = false;
 
-
 const mouse = {
     x: null,
     y: null,
