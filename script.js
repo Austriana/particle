@@ -4,7 +4,7 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let textInput = 'KEDI ❤ MATOU';
+let textInput = 'Swipe me ❤';
 let touch = false;
 
 
